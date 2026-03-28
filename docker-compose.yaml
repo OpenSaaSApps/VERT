@@ -1,0 +1,37 @@
+##############################################################################
+# VERT — Coolify-ready Docker Compose
+#
+# File conversion tool
+# https://github.com/vert-sh/vert
+#
+# No required environment variables — deploys with sensible defaults.
+#
+# ── Optional — sensible defaults provided ────────────────────────────────
+#   PORT                         – Host port          (default: 3000)
+#   PUB_HOSTNAME                 – Public hostname     (default: localhost:5173)
+#   PUB_ENV                      – Environment         (default: production)
+#   PUB_PLAUSIBLE_URL            – Plausible analytics (default: empty)
+#   PUB_DISABLE_ALL_EXTERNAL_REQUESTS – Disable external (default: false)
+#   PUB_VERTD_URL                – Vertd service URL   (default: empty)
+#   PUB_DONATION_URL             – Donation URL         (default: https://donations.vert.sh)
+##############################################################################
+
+services:
+  vert:
+    image: ghcr.io/vert-sh/vert:latest
+    restart: unless-stopped
+    ports:
+      - "${PORT:-3000}:80"
+    environment:
+      - PUB_HOSTNAME=${PUB_HOSTNAME:-localhost}
+      - PUB_ENV=${PUB_ENV:-production}
+      - PUB_PLAUSIBLE_URL=${PUB_PLAUSIBLE_URL:-}
+      - PUB_DISABLE_ALL_EXTERNAL_REQUESTS=${PUB_DISABLE_ALL_EXTERNAL_REQUESTS:-false}
+      - PUB_VERTD_URL=${PUB_VERTD_URL:-}
+      - PUB_DONATION_URL=${PUB_DONATION_URL:-}
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "2"
+        compress: "true"
