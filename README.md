@@ -1,46 +1,47 @@
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/bf441748-0ec5-4c8a-b3e5-11301ee3f0bd" alt="VERT's logo" height="100">
-</p>
-<h1 align="center"><a href="https://vert.sh">VERT.sh</a></h1>
+# VERT
 
-VERT is a file conversion utility that uses WebAssembly to convert files on your device instead of a cloud. Check out the live instance at [vert.sh](https://vert.sh).
+> Click To Deploy VERT — Browser-based File Converter
 
-VERT is built in Svelte and TypeScript.
+[![Sync](https://github.com/opensaasapps/VERT/actions/workflows/sync.yml/badge.svg)](https://github.com/opensaasapps/VERT/actions/workflows/sync.yml) [![Docker](https://github.com/opensaasapps/VERT/actions/workflows/docker.yml/badge.svg)](https://github.com/opensaasapps/VERT/actions/workflows/docker.yml) [![Docker Pulls](https://img.shields.io/docker/pulls/thefractionalpm/VERT)](https://hub.docker.com/r/thefractionalpm/VERT)
 
-## Screenshots
+Upstream: [VERT-sh/VERT](https://github.com/VERT-sh/VERT) · Auto-synced daily
 
-|                     Upload page                      |                     Conversion page                      |
-| :--------------------------------------------------: | :------------------------------------------------------: |
-| ![VERT upload page](docs/images/screenshot-home.png) | ![VERT convert page](docs/images/screenshot-convert.png) |
+---
 
-## Features
+## One-Command Deploy
 
-- Convert files directly on your device using WebAssembly\*
-- No file or file size limits
-- Convert images, audio, documents, and video\*
-- Supports over **250+** file formats
-- Conversion settings
-- User-friendly interface built with Svelte
+```bash
+cp .env.example .env && nano .env
+docker compose up -d
+```
 
-<sup>\* Non-local video conversion is available with our official instance, but the [daemon](https://github.com/VERT-sh/vertd) is easily self-hostable to maintain privacy and fully local functionality.</sup>
+## Coolify / Dokploy
 
-## Documentation
+1. New service → **Docker Compose**
+2. Paste `docker-compose.yml`
+3. Set env vars in UI
+4. Deploy
 
-- [FAQ](./docs/FAQ.md)
-- [Getting Started](./docs/GETTING_STARTED.md)
-- [Using Docker](./docs/DOCKER.md)
-- [Video Conversion](./docs/VIDEO_CONVERSION.md)
+## Environment Variables
 
-## License
+| Variable | Required | Description |
+|---|---|---|
+| `PORT` | ⚪ | |
+| `PUB_HOSTNAME` | ⚪ | |
 
-This project is licensed under the AGPL-3.0 License, please see the [LICENSE](LICENSE) file for details.
+## Image
 
-## Star History
+```
+docker pull ghcr.io/vert-sh/vert:latest
+docker pull thefractionalpm/VERT:latest
+```
 
-<a href="https://www.star-history.com/#VERT-sh/VERT&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=VERT-sh/VERT&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=VERT-sh/VERT&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=VERT-sh/VERT&type=Date" />
- </picture>
-</a>
+## Ports
+
+| Port | Service |
+|---|---|
+| `3000` | Main app |
+
+---
+
+*Part of the [OpenSaaSApps](https://github.com/opensaasapps) Click-To-Deploy collection.*
